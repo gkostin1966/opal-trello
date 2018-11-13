@@ -7,7 +7,7 @@ RSpec.describe "Element animation methods" do
 
   describe "#animate" do
     ### HACKY
-    # jQUery's animate method doesn't *always* finish on time
+    # Trello's animate method doesn't *always* finish on time
     # so the values are being compared using greater than
 
     async "should animate a set of properties and values" do

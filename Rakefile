@@ -6,12 +6,12 @@ ENV['RUNNER'] = 'chrome'
 
 require 'opal/rspec/rake_task'
 Opal::RSpec::RakeTask.new(:default) do |server, task|
-  server.index_path = 'spec-opal/jquery/index.html.erb'
+  server.index_path = 'spec-opal/trello/index.html.erb'
   task.default_path = 'spec-opal'
 end
 
-Opal::RSpec::RakeTask.new(:jquery3) do |server, task|
-  server.index_path = 'spec-opal/jquery/index3.html.erb'
+Opal::RSpec::RakeTask.new(:trello3) do |server, task|
+  server.index_path = 'spec-opal/trello/index3.html.erb'
   task.default_path = 'spec-opal'
 end
 
@@ -20,16 +20,16 @@ Opal::RSpec::RakeTask.new(:zepto) do |server, task|
   task.default_path = 'spec-opal'
 end
 
-desc "Build build/opal-jquery.js"
+desc "Build build/opal-trello.js"
 task :dist do
   require 'fileutils'
   FileUtils.mkdir_p 'build'
 
-  src = Opal::Builder.build('opal-jquery')
+  src = Opal::Builder.build('opal-trello')
   min = uglify src
   gzp = gzip min
 
-  File.open('build/opal-jquery.js', 'w+') do |out|
+  File.open('build/opal-trello.js', 'w+') do |out|
     out << src
   end
 
@@ -73,10 +73,10 @@ namespace :doc do
     sh 'git', 'clone', '-b', 'gh-pages', '--', remote, doc_repo.to_s
   end
 
-  # To generate docs that live on http://opalrb.org/opal-jquery/ use the
+  # To generate docs that live on http://opalrb.org/opal-trello/ use the
   # `rake doc` task
   #
-  # DOC_REPO_REMOTE=https://github.com/opal/opal-jquery.git bundle exec rake doc
+  # DOC_REPO_REMOTE=https://github.com/opal/opal-trello.git bundle exec rake doc
   # open gh-pages/index.html
   task :default => doc_repo.to_s do
     git  = current_git_release.call
@@ -87,7 +87,7 @@ namespace :doc do
     puts command; system command
   end
 
-  # To generate api docs on rubygems: http://www.rubydoc.info/gems/opal-jquery/0.4.2
+  # To generate api docs on rubygems: http://www.rubydoc.info/gems/opal-trello/0.4.2
   # yard --main README.md --markup markdown --github
   # open doc/index.html
 end

@@ -1,1 +1,1 @@
-require 'opal/jquery'
+require 'opal/trello'

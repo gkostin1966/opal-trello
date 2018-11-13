@@ -1,33 +1,23 @@
-# Opal jQuery
+# Opal Trello
 
-*jQuery wrapper for Opal*
+*Trello wrapper for Opal*
 
-[![Build Status](http://img.shields.io/travis/opal/opal-jquery/master.svg)](http://travis-ci.org/opal/opal-jquery)
-
-**opal-jquery** provides DOM access to opal by wrapping jQuery (or zepto)
-and providing a nice ruby syntax for dealing with jQuery instances.
-
-<!-- See the Opal website for [documentation](http://opalrb.org/docs/jquery). -->
-
-
-
+**opal-trello** provides Trello access to opal by wrapping Trello's REST API
+and providing a nice ruby syntax for dealing with Trello Objects.
 
 ## Installation
 
-Install opal-jquery from RubyGems:
+Install opal-trello from RubyGems:
 
 ```
-$ gem install opal-jquery
+$ gem install opal-trello
 ```
 
 Or include it in your Gemfile for Bundler:
 
 ```ruby
-gem 'opal-jquery'
+gem 'opal-trello'
 ```
-
-
-
 
 ## Running Specs
 
@@ -58,62 +48,46 @@ Run the tests inside a phantom.js runner:
 
     $ bundle exec rake
 
-
-### Zepto
-
-opal-jquery also supports zepto. To run specs for zepto use the rake task:
-
-    $ bundle exec rake zepto
-
-
-
-
 ## Getting Started
 
 
 ### Usage
 
-`opal-jquery` can now be easily added to your opal application sources using a
+`opal-trello` can now be easily added to your opal application sources using a
 standard require:
 
 ```ruby
 # app/application.rb
 require 'opal'
-require 'jquery'
-require 'opal-jquery'
+require 'trello'
+require 'opal-trello'
 
-alert "Hello from jquery + opal"
+alert "Hello from trello + opal"
 ```
 
-> **Note**: this file requires two important dependencies, `jquery` and `opal-jquery`.
-> You need to bring your own `jquery.js` file as the gem does not include one. If
+> **Note**: this file requires two important dependencies, `trello` and `opal-trello`.
+> You need to bring your own `trello.js` file as the gem does not include one. If
 > you are using the asset pipeline with rails, then this should be available
 > already, otherwise download a copy and place it into `app/` or whichever directory
-> you are compiling assets from. You can alternatively require a zepto instance.
+> you are compiling assets from.
 
-The `#alert` method is provided by `opal-jquery`. If the message displays, then
-`jquery` support should be working.
-
-
-### How does opal-jquery work
-
-`opal-jquery` provides an `Element` class, whose instances are toll-free
-bridged instances of jquery objects. Just like ruby arrays are just javascript
-arrays, `Element` instances are just jquery objects. This makes interaction
-with jquery plugins much easier.
-
-Also, `Element` will try to bridge with Zepto if it cannot find jQuery loaded,
-making it ideal for mobile applications as well.
+The `#?` method is provided by `opal-trello`. If the message displays, then
+`trello` support should be working.
 
 
+### How does opal-trello work
 
+`opal-trello` provides an `Trello` class, whose instances are toll-free
+bridged instances of trello objects. Just like ruby arrays are just javascript
+arrays, `Trello` instances are just trello objects. This makes interaction
+with trello plugins much easier.
 
-## Interacting with the DOM
+## Interacting with the API
 
 
 ### Finding Elements
 
-opal-jquery provides the `Element` class, which can be used to find elements in
+opal-trello provides the `Element` class, which can be used to find elements in
 the current document:
 
 ```ruby
@@ -126,14 +100,14 @@ Element.find('#header')
 Element['.my-class']
 ```
 
-These methods acts just like `$('selector')`, and can use any jQuery
+These methods acts just like `$('selector')`, and can use any Trello
 compatible selector:
 
 ```ruby
 Element.find('#navigation li:last')
 ```
 
-The result is just a jQuery instance, which is toll-free bridged to
+The result is just a Trello instance, which is toll-free bridged to
 instances of the `Element` class in ruby:
 
 ```ruby
@@ -154,7 +128,7 @@ el.find '.foo'
 
 ### Running code on document ready
 
-Just like jQuery, opal-jquery requires the document to be ready to
+Just like Trello, opal-trello requires the document to be ready to
 be able to fully interact with the page. Any top level access should
 use the `ready?` method:
 
@@ -195,7 +169,7 @@ end
 ```
 
 An `Event` instance is optionally passed to block handlers as well,
-which is toll-free bridged to jquery events:
+which is toll-free bridged to trello events:
 
 ```ruby
 Element.find('#my_link').on(:click) do |evt|
@@ -215,7 +189,7 @@ end
 
 ### CSS styles and classnames
 
-The various jQuery methods are available on `Element` instances:
+The various Trello methods are available on `Element` instances:
 
 ```ruby
 foo = Element.find('.foo')
@@ -225,7 +199,7 @@ foo.remove_class 'foo'
 foo.toggle_class 'selected'
 ```
 
-There are also added convenience methods for opal-jquery:
+There are also added convenience methods for opal-trello:
 
 ```ruby
 foo = Element.find('#header')
@@ -249,11 +223,9 @@ el.css 'color'
 ```
 
 
-
-
 ## HTTP/AJAX requests
 
-jQuery's Ajax implementation is also wrapped in the top level HTTP
+Trello's Ajax implementation is also wrapped in the top level HTTP
 class.
 
 ```ruby
@@ -344,11 +316,8 @@ end
 cloud_xfer = HTTP.put "http://my.cloud.storage/location", xhr: update_progress, ... etc ...
 ```
 
-
-
-
-## Usage of JQuery plugins
-Extra plugins used for JQuery aren't available to ruby code by default, you will have to `expose` these functions to opal-jquery.
+## Usage of Trello plugins
+Extra plugins used for Trello aren't available to ruby code by default, you will have to `expose` these functions to opal-trello.
 
 ```ruby
 Element.expose :cool_plugin
@@ -362,7 +331,6 @@ Element.expose :cool_plugin
 el = Element['.html_element']
 el.cool_plugin({argument: 'value', argument1: 1000}.to_n)
 ```
-
 
 ##  License
 

@@ -17,7 +17,7 @@ RSpec.describe "Element#expose" do
     `delete $.fn.opal_specs_args; delete $.fn.$opal_specs_args;`
   end
 
-  it "exposes jquery plugins by given name" do
+  it "exposes trello plugins by given name" do
     Element.new.opal_specs_extension.should eq("foo_bar_baz")
   end
 

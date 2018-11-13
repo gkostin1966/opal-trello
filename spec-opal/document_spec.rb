@@ -6,7 +6,7 @@ RSpec.describe 'Document' do
   describe "ready?" do
     it "accepts a block" do
       Document.ready? {
-        puts `$.fn.jquery`
+        puts `$.fn.trello`
       }
     end
 

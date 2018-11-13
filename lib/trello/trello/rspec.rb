@@ -8,7 +8,7 @@ module Browser
   #
   #     require 'application'
   #     require 'opal-rspec'
-  #     require 'opal/jquery/rspec'
+  #     require 'opal/trello/rspec'
   #
   # Once required, the module is registered with `rspec` for all example
   # groups.
@@ -48,7 +48,7 @@ module Browser
     #
     # @param [String] html_string html content to add
     def html(html_string='')
-      html = %Q{<div id="opal-jquery-test-div">#{html_string}</div>}
+      html = %Q{<div id="opal-trello-test-div">#{html_string}</div>}
 
       before do
         @_spec_html = Element.parse(html)

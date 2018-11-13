@@ -10,7 +10,7 @@ RSpec.describe "Element#method_missing" do
     end
   end
 
-  context 'jQuery plugin methods' do
+  context 'Trello plugin methods' do
     subject(:element) { Element.new }
 
     before do

@@ -1,11 +1,11 @@
 require 'native'
-require 'opal/jquery/constants'
+require 'opal/trello/constants'
 
-# {Element} is a toll-free bridged class that maps to native jQuery instances.
+# {Element} is a toll-free bridged class that maps to native Trello instances.
 #
-# As {Element} maps to a jQuery object, it can be used to represent 0, 1, or
+# As {Element} maps to a Trello object, it can be used to represent 0, 1, or
 # more actual DOM elements. {Element} exposes a more ruby-esqe interface to
-# jQuery.
+# Trello.
 #
 # ## Usage
 #
@@ -21,11 +21,11 @@ require 'opal/jquery/constants'
 #     # => #<Element [<div id="title">]>
 #
 # This is a nicer version of creating a javascript element using
-# `document.createElement` and then wrapping it in a jquery object.
+# `document.createElement` and then wrapping it in a trello object.
 #
 # ### Finding existing elements in dom
 #
-# Any valid jQuery selector expressions can be used with either {Element.find}
+# Any valid Trello selector expressions can be used with either {Element.find}
 # or {Element.[]}.
 #
 #     foos = Element.find('.foo')
@@ -43,14 +43,14 @@ require 'opal/jquery/constants'
 # ### DOM Content from string
 #
 # Finally, an {Element} instance can be created by parsing a string of html
-# content. This will parse multiple elements, like jquery, if string content
+# content. This will parse multiple elements, like trello, if string content
 # contains them:
 #
 #     Element.parse '<div id="title">hello world</div>'
 #     # => #<Element [<div id="title">]>
 #
-class Element < `#{JQUERY_CLASS.to_n}`
-  `var $ = #{JQUERY_SELECTOR.to_n}` # cache $ for SPEED
+class Element < `#{TRELLO_CLASS.to_n}`
+  `var $ = #{TRELLO_SELECTOR.to_n}` # cache $ for SPEED
 
   include Enumerable
 
@@ -112,13 +112,13 @@ class Element < `#{JQUERY_CLASS.to_n}`
     `$.parseHTML ? $($.parseHTML(str)) : $(str)`
   end
 
-  # Expose jQuery plugins to become available in ruby code. By default,
-  # jQuery methods or plugins must be manually exposed as ruby methods.
+  # Expose Trello plugins to become available in ruby code. By default,
+  # Trello methods or plugins must be manually exposed as ruby methods.
   # This method simply creates an aliasing ruby method to call the original
   # javascript function.
   #
   # @example
-  #   # Expose bootstraps jQuery `modal` function
+  #   # Expose bootstraps Trello `modal` function
   #   Element.expose :modal
   #
   #   Element.find('.my-modal').modal
@@ -220,7 +220,7 @@ class Element < `#{JQUERY_CLASS.to_n}`
   # @!method text(text = nil)
   #
   # Get or set the text content of each element in this collection. Setting
-  # the content is provided as a compatibility method for jquery. Instead
+  # the content is provided as a compatibility method for trello. Instead
   # {#text=} should be used for setting text content.
   #
   # If no `text` content is provided, then the text content of this element
@@ -410,7 +410,7 @@ class Element < `#{JQUERY_CLASS.to_n}`
 
   # Set the given attribute `attr` on each element in this collection.
   #
-  # @see http://api.jquery.com/attr/
+  # @see http://api.trello.com/attr/
   def []=(name, value)
     `return self.removeAttr(name)` if value.nil?
     `self.attr(name, value)`
@@ -525,7 +525,7 @@ class Element < `#{JQUERY_CLASS.to_n}`
     %x{
       var result = self.data.apply(self, args);
       if (
-        (typeof(result) === 'object') && !(result instanceof #{JQUERY_CLASS})
+        (typeof(result) === 'object') && !(result instanceof #{TRELLO_CLASS})
       ) {
         result = #{ JSON.from_object `result` };
       }

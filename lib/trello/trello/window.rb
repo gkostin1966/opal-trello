@@ -1,4 +1,4 @@
-require 'opal/jquery/element'
+require 'opal/trello/element'
 
 module Browser
   # {Window} instances are {Native} objects used to wrap native window instances.
@@ -9,7 +9,7 @@ module Browser
     include Native
 
     # Returns this {Window} instance wrapped as an {Element}. Useful for
-    # delegating jQuery events, which allows the use of `window` as target.
+    # delegating Trello events, which allows the use of `window` as target.
     #
     # @return [Element]
     def element

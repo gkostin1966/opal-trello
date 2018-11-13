@@ -8,11 +8,11 @@ module Browser
   #
   # ## Usage
   #
-  # LocalStorage is not included by default when you require opal-jquery, so
+  # LocalStorage is not included by default when you require opal-trello, so
   # you will need to require it explicitly in your code:
   #
-  #     require 'opal/jquery'
-  #     require 'opal/jquery/local_storage'
+  #     require 'opal/trello'
+  #     require 'opal/trello/local_storage'
   #
   #     puts LocalStorage
   #     # => #<LocalStorage>

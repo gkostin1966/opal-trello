@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'opal/jquery/local_storage'
+require 'opal/trello/local_storage'
 
 RSpec.describe LocalStorage do
   before { subject.clear }

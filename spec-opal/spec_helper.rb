@@ -1,9 +1,9 @@
-require 'jquery/jquery-1.8.3'
+require 'trello/trello-1.8.3'
 require 'opal-rspec'
-require 'opal/jquery'
-require 'opal/jquery/rspec'
+require 'opal/trello'
+require 'opal/trello/rspec'
 
-module JQueryTestHelpers
+module TrelloTestHelpers
   def find(selector)
     Element.find selector
   end
@@ -16,7 +16,7 @@ module SkipAsync
 end
 
 RSpec.configure do |config|
-  config.include JQueryTestHelpers
+  config.include TrelloTestHelpers
   config.extend SkipAsync
   config.formatter = :doc
   config.color = true

@@ -1,6 +1,6 @@
-require 'opal/jquery/constants'
+require 'opal/trello/constants'
 
-# {Event} wraps native jQuery events into a ruby api. Instances of events
+# {Event} wraps native Trello events into a ruby api. Instances of events
 # can be accessed by {#to_n}.
 #
 # {Event} instances should not be created directly, as they are usually
@@ -14,12 +14,12 @@ require 'opal/jquery/constants'
 #
 # ## Usage
 #
-# {Event} exposes a slightly different API than jQuery, as {Event} tries to
+# {Event} exposes a slightly different API than Trello, as {Event} tries to
 # add some more ruby flavour to the object.
 #
 # ### Accessing element triggering event
 #
-# Unlike jQuery, the context of an event handler is not set to the triggering
+# Unlike Trello, the context of an event handler is not set to the triggering
 # element. Instead, the element triggering the event can be accessed from the
 # {Event} instance.
 #
@@ -27,7 +27,7 @@ require 'opal/jquery/constants'
 #
 # To access the current element in the bubbling phase, {#element} or
 # {#current_target} can be used which is the same as `currentTarget` or `this`
-# from jQuery.
+# from Trello.
 #
 #     element.on :click do |event|
 #       puts "element clicked: #{event.element}
@@ -39,7 +39,7 @@ require 'opal/jquery/constants'
 #
 # The {#target} of an event is the actual dom element that triggered the event,
 # and this will be the same element through all phases of event bubbling. This
-# is the same as the `event.target` jQuery property.
+# is the same as the `event.target` Trello property.
 #
 #     element.on :click do |event|
 #       puts "actual element: #{event.target}"
@@ -71,15 +71,15 @@ require 'opal/jquery/constants'
 #     # => true
 #
 class Event
-  `var $ = #{JQUERY_SELECTOR.to_n}` # cache $ for SPEED
+  `var $ = #{TRELLO_SELECTOR.to_n}` # cache $ for SPEED
 
   # @private
-  # @param native [JSObject] native jquery/javascript event
+  # @param native [JSObject] native trello/javascript event
   def initialize(native)
     @native = native
   end
 
-  # Returns native javascript event created by jQuery.
+  # Returns native javascript event created by Trello.
   #
   # @return [JSObject]
   def to_n

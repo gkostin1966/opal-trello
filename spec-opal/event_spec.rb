@@ -44,7 +44,7 @@ RSpec.describe Event do
     type.should == :opal_random
   end
 
-  it '#target returns a JQuery wrapper around the element that triggered the event' do
+  it '#target returns a Trello wrapper around the element that triggered the event' do
     foo = Element['#foo']
     bar = Element['#bar']
     target = nil

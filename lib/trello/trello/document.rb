@@ -1,5 +1,5 @@
-require 'opal/jquery/constants'
-require 'opal/jquery/element'
+require 'opal/trello/constants'
+require 'opal/trello/element'
 
 module Browser
   # {Document} includes these methods to extend {Element}.
@@ -11,14 +11,14 @@ module Browser
   #
   # A useful method on {Document} is the {#ready?} method, which can be used to
   # run a block once the document is ready. This is equivalent to passing a
-  # function to the `jQuery` constructor.  Unlike jQuery it will work correctly
+  # function to the `Trello` constructor.  Unlike Trello it will work correctly
   # even if called *after* the document is already loaded.
   #
   #     Document.ready? do
   #       puts "Page is ready to use!"
   #     end
   #
-  # Just like jQuery, multiple blocks may be passed to {#ready?}.
+  # Just like Trello, multiple blocks may be passed to {#ready?}.
   #
   # Document.ready (without the question mark) returns the equivilent promise.
   # Like other promises it can be combined using the when and then methods.
@@ -50,7 +50,7 @@ module Browser
   #     end
   #
   module DocumentMethods
-    `var $ = #{JQUERY_SELECTOR.to_n}` # cache $ for SPEED
+    `var $ = #{TRELLO_SELECTOR.to_n}` # cache $ for SPEED
 
     # Register a block to run once the document/page is ready.
     # will call the block if the document is already ready

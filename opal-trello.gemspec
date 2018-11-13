@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/opal/jquery/version', __FILE__)
+require File.expand_path('../lib/opal/trello/version', __FILE__)
 
 Gem::Specification.new do |s|
-  s.name         = 'opal-jquery'
-  s.version      = Opal::JQuery::VERSION
-  s.authors      = ['Adam Beynon', 'Elia Schito']
-  s.email        = 'elia@schito.me'
-  s.homepage     = 'https://github.com/opal/opal-jquery#readme'
-  s.summary      = 'Opal access to jQuery'
-  s.description  = 'Opal DOM library for jQuery'
+  s.name         = 'opal-trello'
+  s.version      = Opal::Trello::VERSION
+  s.authors      = ['Greg Kostin']
+  s.email        = 'greg@kostin.me'
+  s.homepage     = 'https://github.com/gkostin1966/opal-trello#readme'
+  s.summary      = 'Opal access to Trello'
+  s.description  = 'Opal Object library for Trello'
 
   s.files          = `git ls-files`.split("\n")
   s.executables    = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }

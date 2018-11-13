@@ -1,11 +1,11 @@
 require 'json'
 require 'native'
 require 'promise'
-require 'opal/jquery/constants'
+require 'opal/trello/constants'
 
 # {HTTP} is used to perform a `XMLHttpRequest` in ruby. It is a simple wrapper
-# around jQuerys' `$.ajax` call. `XMLHttpRequest` is not wrapped directly as
-# jquery provides some cross browser fixes.
+# around Trellos' `$.ajax` call. `XMLHttpRequest` is not wrapped directly as
+# trello provides some cross browser fixes.
 #
 # # Making requests
 #
@@ -78,7 +78,7 @@ require 'opal/jquery/constants'
 # - {#status_code} - returns the raw {HTTP} status code as integer
 # - {#json} - tries to convert the body response into a JSON object
 class HTTP
-  `var $ = #{JQUERY_SELECTOR.to_n}` # cache $ for SPEED
+  `var $ = #{TRELLO_SELECTOR.to_n}` # cache $ for SPEED
 
   # All valid {HTTP} action methods this class accepts.
   #
